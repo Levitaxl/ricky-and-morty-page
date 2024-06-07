@@ -1,0 +1,23 @@
+.admin-mainflex .left-slot {
+    width: 600px;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0 0 0 ;
+    background-color: #799FCB;
+}
+
+@media screen and (max-width:1400px) {
+    .admin-mainflex .left-slot {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width:1279px) {
+    .admin-mainflex .left-slot {
+        width: 400px;
+    }
+}

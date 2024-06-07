@@ -1,0 +1,27 @@
+.admin-mainflex .right-slot {
+    width: calc(100% - 600px);
+    width: -o-calc(100% - 600px);
+    width: -moz-calc(100% - 600px);
+    width: -webkit-calc(100% - 600px);
+    padding: 0 15px;
+}
+
+@media screen and (max-width:1400px) {
+
+    .admin-mainflex .right-slot {
+        width: calc(100% - 500px);
+        width: -o-calc(100% - 500px);
+        width: -moz-calc(100% - 500px);
+        width: -webkit-calc(100% - 500px);
+    }
+}
+
+@media screen and (max-width:1279px) {
+    .admin-mainflex .right-slot {
+        width: calc(100% - 400px);
+        width: -o-calc(100% - 400px);
+        width: -moz-calc(100% - 400px);
+        width: -webkit-calc(100% - 400px);
+    }
+
+}
