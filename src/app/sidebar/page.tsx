@@ -4,27 +4,255 @@
 * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
 */
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import Link from "next/link"
 import { CardTitle, CardHeader, CardContent, Card } from "@/app/sidebar/ui/card"
+import { Input } from "@/components/ui/input"
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+import {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table"
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 
+
+export type Character = {
+  id: number;
+  name: string;
+  species: string;
+  type: string;
+  gender: string;
+  image: string;
+}
+
+export const columns: ColumnDef<Character>[] = [
+  {
+    accessorKey: "id",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          id
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
+  },
+  {
+    accessorKey: "name",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+  },
+
+  {
+    accessorKey: "species",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          species
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("species")}</div>,
+  },
+
+  {
+    accessorKey: "gender",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          gender
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("gender")}</div>,
+  },
+
+  
+  {
+    accessorKey: "type",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          type
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("type")}</div>,
+  },
+
+/*
+  {
+    id: "actions",
+    enableHiding: false,
+    cell: ({ row }) => {
+      const payment = row.original
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(payment.id)}
+            >
+              Copy payment ID
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>View customer</DropdownMenuItem>
+            <DropdownMenuItem>View payment details</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    },
+  },*/
+]
 
 export default function sidebar() {
 
+  const [data, setData] = useState<any[]>([]);
   const [showElements, setShowElements] = useState(true); // Estado para controlar la visibilidad
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+  const [columnVisibility, setColumnVisibility] =
+  React.useState<VisibilityState>({})
+  const [rowSelection, setRowSelection] = React.useState({})
 
+  const table = useReactTable({
+    data,
+    columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection,
+    },
+  })
   const handleClick = async () => {
     setShowElements(!showElements)
   };
 
 
+  const [charactersRickAndMorty, setCharactersRickAndMorty] = useState<Character[]>([]);
+
+  useEffect(() => {
+    const fetchCharacters = async () => {
+
+        const data312 = [];
+      
+        for (let i = 0; i < 30; i++) {
+          const id = Math.floor(Math.random() * 1000000) + 1; // ID aleatorio entre 1 y 1 millón
+          const amount = Math.floor(Math.random() * 10000) + 1; // Cantidad aleatoria entre 1 y 10000
+          const status = "success"; // Estatus aleatorio (Activo o Inactivo)
+          const email = `usuario${i}@example.com`; // Email con formato 'usuarioN@example.com'
+      
+          data312.push({ id, amount, status, email });
+        }
+
+        setData(data312);
+
+      const response = await fetch('https://rickandmortyapi.com/api/character');
+      const data = await response.json();
+      const first20Characters = data.results;
+
+      const response2 = await fetch('https://rickandmortyapi.com/api/character?page=2');
+      const data2 = await response2.json();
+      const first20Characters2 = data2.results;
+
+      const response3 = await fetch('https://rickandmortyapi.com/api/character?page=3');
+      const data3 = await response3.json();
+      const first20Characters3 = data3.results;
+
+      const charactersNew = Array.from([...first20Characters, ...first20Characters2, ...first20Characters3]);
+
+      localStorage.setItem('characters', JSON.stringify(charactersNew)); // Guardar en LocalStorage
+
+      setData(charactersNew);
+
+      console.log(charactersNew)
+      
+    };
+
+    fetchCharacters();
+    console.log(charactersRickAndMorty);
+
+  }, []);
 
   
 
   return (
     <div className="flex h-screen bg-gray-200 dark:bg-gray-900">
-      <aside className=  {` bg-gradient-to-b from-white to-gray-100 dark:from-gray-800 dark:to-gray-700  ${showElements && 'w-64'} ${!showElements && 'w-32'}`}>
+      <aside className=  {`h-full bg-gradient-to-b from-white to-gray-100 dark:from-gray-800 dark:to-gray-75 transition-all	duration-500 fixed ${showElements && 'w-64'} ${!showElements && 'w-32'}`}>
         <div className="border-b-2 pt-[8px] h-[92px] ">
           <div className="logo-icon flex justify-center"><img className="h-[75px] " src="./logo.png"/></div>
         </div>
@@ -49,29 +277,153 @@ export default function sidebar() {
           </li>
         </ul>
       </aside>
-      <main className="flex-1 mt-[15px] pl-[30px] mr-[15px]">
-        <div className ="">
-          <Card className="w-full mr-[10px] shadow-[0 4px 24px 0 rgba(34,41,47,0.1))]" >
-            <CardHeader className="p-4 flex flex-row">
-               <SideBarIcon onClick={handleClick} className="h-5 w-5 text-gray-500 dark:text-gray-400 m-auto mx-0 cursor-pointer	" />
-  
-          
-              <div className="flex ml-[15px]">
-                <CardTitle className="text-[#799FCB] text-sm/[17px]">Hermes Sanchez
-                <br/>
-                <span className="text-[#6e6b7b] text-sm/[13px] mt-[-8px]">Super Administrator</span>
-                </CardTitle>
-              </div>
-            </CardHeader>
-          </Card>
+      <main className={`flex-1 pl-[30px] mr-[15px]  transition-all	duration-500 ${showElements && 'ml-[250px]'} ${!showElements && 'ml-[115px]'} '}`} >
+        <div className ="fixed w-full mr-[10px] z-10 h-[30px] bg-gray-200">
+          <div className ={`fixed w-full mr-[10px] z-10 mt-[15px] transition-all	duration-500  ${showElements && 'pr-[295px]'}   ${!showElements && 'pr-[160px]'} '}`} >
+            <Card className="w-full mr-[10px] shadow-[0 4px 24px 0 rgba(34,41,47,0.1))]" >
+              <CardHeader className="p-4 flex flex-row">
+                <SideBarIcon onClick={handleClick} className="h-5 w-5 text-gray-500 dark:text-gray-400 m-auto mx-0 cursor-pointer	" />
+    
+            
+                <div className="flex ml-[15px]">
+                  <CardTitle className="text-[#799FCB] text-sm/[17px]">Hermes Sanchez
+                  <br/>
+                  <span className="text-[#6e6b7b] text-sm/[13px] mt-[-8px]">Super Administrator</span>
+                  </CardTitle>
+                </div>
+              </CardHeader>
+            </Card>
+          </div>
         </div>
 
-        <div className ="pt-[13px]">
+        <div className ="pt-[13px] mt-[85px]">
           <Card className="w-full mr-[10px] shadow-[0 4px 24px 0 rgba(34,41,47,0.1))]" >
-            <CardHeader className="p-4 flex flex-row ">
-                <CardTitle className="text-[#799FCB] text-sm/[17px]">Listado de personajes</CardTitle>
+          <div className="grid grid-cols-1 divide-y">
+              <CardHeader className="p-4 flex flex-row ">
+                  <CardTitle className="text-[25px]">Listado de personajes</CardTitle>
+              </CardHeader>
 
-            </CardHeader>
+              <CardContent>
+
+              <div className="w-full">
+      <div className="flex items-center py-4">
+        <Input
+          placeholder="Filter name..."
+          value={((table.getColumn("name")?.getFilterValue() as string) || (table.getColumn("id")?.getFilterValue() as string))  ?? ""}
+          onChange={(event) =>
+            table.getColumn("name")?.setFilterValue(event.target.value) ||  table.getColumn("id")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="ml-auto">
+              Columns <ChevronDown className="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .map((column) => {
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className="capitalize"
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) =>
+                      column.toggleVisibility(!!value)
+                    }
+                  >
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                )
+              })}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      <div className="rounded-md border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  )
+                })}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex-1 text-sm text-muted-foreground">
+          {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
+        </div>
+        <div className="space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </Button>
+        </div>
+      </div>
+    </div>
+
+              </CardContent>
+
+              
+          </div>
+
+           
           </Card>
         </div>
       </main>
