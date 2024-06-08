@@ -4,171 +4,47 @@
 * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
 */
 'use client';
-import { Button } from '@/components/ui/button';
-import { ColumnDef } from '@tanstack/table-core';
-import { ArrowUpDown } from 'lucide-react';
 import React, { useState, useEffect, createContext   } from 'react';
 import { SidebarComponent} from "./components/sidebar"
-import {TableComponent} from "./components/table"
+import { Form} from "./components/form"
+
+import { useSearchParams } from 'next/navigation'
+
 
 export const userContext = createContext({});
 export const tableContext = createContext({});;
 export const handleClickContext = createContext({});
 export const columnsContext = createContext({});
+export const personajeContext = createContext({});;
+
 
 export default function listado() {
   const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
-  const [data, setData] = useState<any[]>([]);
+  const [personaje, setPersonaje] = useState<any>({}); // Estado para controlar la visibilidad
 
   const handleClick = async () => {
     setShowElements(!showElements)
   };
 
-  type Character = {
-    id: number;
-    name: string;
-    species: string;
-    type: string;
-    gender: string;
-    image: string;
-  }
-
-  const columns: ColumnDef<Character>[] = [
-    {
-      accessorKey: "id",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            id
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("id")}</div>,
-    },
-    {
-      accessorKey: "name",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            name
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
-    },
-  
-    {
-      accessorKey: "species",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            species
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("species")}</div>,
-    },
-  
-    {
-      accessorKey: "gender",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            gender
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("gender")}</div>,
-    },
-  
-    
-    {
-      accessorKey: "type",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            type
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("type")}</div>,
-    },
-  
-  /*
-    {
-      id: "actions",
-      enableHiding: false,
-      cell: ({ row }) => {
-        const payment = row.original
-  
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem
-                onClick={() => navigator.clipboard.writeText(payment.id)}
-              >
-                Copy payment ID
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>View customer</DropdownMenuItem>
-              <DropdownMenuItem>View payment details</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        )
-      },
-    },*/
-  ]
-  
-  
-  
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     const fetchCharacters = async () => {
+      const id = searchParams.get('id');
+      if(id){
+        const personajes = JSON.parse(localStorage.getItem("characters"));
+        const personajeNew = personajes.find(elemento => elemento.id == id);
 
-      const response = await fetch('https://rickandmortyapi.com/api/character');
-      const data = await response.json();
-      const first20Characters = data.results;
+        if(!personajeNew){
+          alert('personaje no encontrado');
+          return;
+        }
 
-      const response2 = await fetch('https://rickandmortyapi.com/api/character?page=2');
-      const data2 = await response2.json();
-      const first20Characters2 = data2.results;
-
-      const response3 = await fetch('https://rickandmortyapi.com/api/character?page=3');
-      const data3 = await response3.json();
-      const first20Characters3 = data3.results;
-
-      const charactersNew = Array.from([...first20Characters, ...first20Characters2, ...first20Characters3]);
-
-      localStorage.setItem('characters', JSON.stringify(charactersNew)); // Guardar en LocalStorage
-
-      setData(charactersNew);
+        setPersonaje(personajeNew)
+        
+        console.log(personajeNew)
+      
+      } 
 
       
     };
@@ -185,14 +61,13 @@ export default function listado() {
         </handleClickContext.Provider>
       </userContext.Provider> 
 
-      <tableContext.Provider value={data}>
-          <userContext.Provider value={showElements}>
-          <columnsContext.Provider value={columns}>
-              <TableComponent />
-            </columnsContext.Provider>
-          </userContext.Provider> 
-      </tableContext.Provider> 
+      <userContext.Provider value={showElements}>
+        <personajeContext.Provider value={personaje}>
+          <Form></Form>
+        </personajeContext.Provider>
+      </userContext.Provider> 
+      
+      </div>
+    );
 
-    </div>
-  )
 }

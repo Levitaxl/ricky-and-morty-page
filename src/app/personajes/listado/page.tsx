@@ -7,9 +7,11 @@
 import { Button } from '@/components/ui/button';
 import { ColumnDef } from '@tanstack/table-core';
 import { ArrowUpDown } from 'lucide-react';
-import React, { useState, useEffect, createContext   } from 'react';
+import React, { useState, useEffect, createContext, useHistory   } from 'react';
 import { SidebarComponent} from "./components/sidebar"
 import {TableComponent} from "./components/table"
+import Link from "next/link"
+
 
 export const userContext        = createContext({});
 export const tableContext       = createContext({});;
@@ -20,8 +22,10 @@ export default function listado() {
   const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
   const [data, setData] = useState<any[]>([]);
 
+
   const handleClick = async () => {
     setShowElements(!showElements)
+    console.log(showElements)
   };
 
   type Character = {
@@ -62,7 +66,13 @@ export default function listado() {
           </Button>
         )
       },
-      cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+      cell: ({ row }) => <Link href={"consultar?id="+row.getValue("id")}>
+        <div className="text-blue-500 font-bold hover:underline">
+          {row.getValue("name")}
+        </div>
+    </Link>
+    
+    ,
     },
   
     {
@@ -178,7 +188,7 @@ export default function listado() {
     <div className="flex h-screen bg-gray-200 dark:bg-gray-900">
       <userContext.Provider value={showElements}>
         <handleClickContext.Provider value={handleClick}>
-          <SidebarComponent tableContext={tableContext} />
+          <SidebarComponent />
         </handleClickContext.Provider>
       </userContext.Provider> 
 

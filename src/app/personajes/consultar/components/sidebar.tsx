@@ -3,10 +3,11 @@
 import React, { useContext,createContext } from 'react';
 import Link from "next/link"
 import {HeaderComponent} from "./header"
+import {userContext} from "../page"
 
 export const tableContext = createContext({});
 
-export const SidebarComponent = (userContext:any ) => {
+export const SidebarComponent = ( ) => {
 
     const showElementsSidebar = useContext(userContext)
 
