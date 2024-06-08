@@ -16,7 +16,7 @@ export const tableContext = createContext({});;
 export const handleClickContext = createContext({});
 export const columnsContext = createContext({});
 
-export default function sidebar() {
+export default function listado() {
   const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
   const [data, setData] = useState<any[]>([]);
 
@@ -196,12 +196,3 @@ export default function sidebar() {
     </div>
   )
 }
-
-
-
-
-
-
-
-
-

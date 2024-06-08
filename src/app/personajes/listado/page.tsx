@@ -11,12 +11,12 @@ import React, { useState, useEffect, createContext   } from 'react';
 import { SidebarComponent} from "./components/sidebar"
 import {TableComponent} from "./components/table"
 
-export const userContext = createContext({});
-export const tableContext = createContext({});;
+export const userContext        = createContext({});
+export const tableContext       = createContext({});;
 export const handleClickContext = createContext({});
-export const columnsContext = createContext({});
+export const columnsContext     = createContext({});
 
-export default function sidebar() {
+export default function listado() {
   const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
   const [data, setData] = useState<any[]>([]);
 
@@ -146,9 +146,6 @@ export default function sidebar() {
     },*/
   ]
   
-  
-  
-
   useEffect(() => {
     const fetchCharacters = async () => {
 
@@ -181,7 +178,7 @@ export default function sidebar() {
     <div className="flex h-screen bg-gray-200 dark:bg-gray-900">
       <userContext.Provider value={showElements}>
         <handleClickContext.Provider value={handleClick}>
-          <SidebarComponent />
+          <SidebarComponent tableContext={tableContext} />
         </handleClickContext.Provider>
       </userContext.Provider> 
 
