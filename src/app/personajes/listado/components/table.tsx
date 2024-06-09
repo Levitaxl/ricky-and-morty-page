@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { CardTitle, CardHeader, CardContent, Card } from "@/app/sidebar/ui/card"
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import {
     ColumnFiltersState,
@@ -38,10 +38,10 @@ import {
 
   
 
-export const TableComponent = ( ) => {
+export const TableComponent = (userContext ) => {
     const data = useContext(tableContext);
     const showElements = useContext(userContext)
-    const columns = useContext(columnsContext)
+    const columns = useContext(columnsContext) ?? []
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] =

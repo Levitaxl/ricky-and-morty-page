@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useContext,createContext } from 'react';
-import {userContext} from '../page'
 import Link from "next/link"
 import {HeaderComponent} from "./header"
+import {userContext} from "../page"
 
 export const tableContext = createContext({});
 
@@ -15,7 +15,7 @@ export const SidebarComponent = ( ) => {
       <div className=  {`${showElementsSidebar && 'w-64'} ${!showElementsSidebar && 'w-32'}`}>
         <aside className=  {`h-full bg-gradient-to-b from-white to-gray-100 dark:from-gray-800 dark:to-gray-75 transition-all	duration-100 fixed ${showElementsSidebar && 'w-64'} ${!showElementsSidebar && 'w-32'}`}>
             <div className="border-b-2 pt-[8px] h-[92px] ">
-              <div className="logo-icon flex justify-center"><img className="h-[75px] " src="./logo.png"/></div>
+              <div className="logo-icon flex justify-center"><img className="h-[75px] " src="http://localhost:3000/logo.png"/></div>
             </div>
             <ul>
               <li className={`flex items-center  hover:bg-gray-100 dark:hover:bg-gray-700 p-4  ${!showElementsSidebar && 'm-auto'} ` } >

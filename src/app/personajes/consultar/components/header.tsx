@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useContext } from 'react';
-import { CardTitle, CardHeader, Card } from "@/app/sidebar/ui/card"
+import { CardTitle, CardHeader, Card } from "@/components/ui/card"
 import {tableContext} from './sidebar'
 import {handleClickContext} from '../page'
 
