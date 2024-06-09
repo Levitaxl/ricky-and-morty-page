@@ -21,6 +21,7 @@ export const personajeContext = createContext({});;
 export default function listado() {
   const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
   const [personaje, setPersonaje] = useState<any>({}); // Estado para controlar la visibilidad
+  const [bool, setBool] = useState<any>(false); // Estado para controlar la visibilidad
 
   const handleClick = async () => {
     setShowElements(!showElements)
@@ -41,15 +42,14 @@ export default function listado() {
         }
 
         setPersonaje(personajeNew)
-        
-        console.log(personajeNew)
+        setBool(true);
+        //console.log(personajeNew)
       
       } 
 
       
     };
-
-    fetchCharacters();
+    if(!bool) fetchCharacters();
 
   }, []);
 
@@ -61,12 +61,7 @@ export default function listado() {
         </handleClickContext.Provider>
       </userContext.Provider> 
 
-      <userContext.Provider value={showElements}>
-        <personajeContext.Provider value={personaje}>
-          <Form></Form>
-        </personajeContext.Provider>
-      </userContext.Provider> 
-      
+      {bool && <Form personaje={personaje}></Form>}
       </div>
     );
 

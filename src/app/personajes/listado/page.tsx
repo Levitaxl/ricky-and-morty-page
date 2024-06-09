@@ -7,7 +7,7 @@
 import { Button } from '@/components/ui/button';
 import { ColumnDef } from '@tanstack/table-core';
 import { ArrowUpDown } from 'lucide-react';
-import React, { useState, useEffect, createContext, useHistory   } from 'react';
+import React, { useState, useEffect, createContext} from 'react';
 import { SidebarComponent} from "./components/sidebar"
 import {TableComponent} from "./components/table"
 import Link from "next/link"
@@ -158,24 +158,29 @@ export default function listado() {
   
   useEffect(() => {
     const fetchCharacters = async () => {
+      const dataSaved = localStorage.getItem("characters");
+      console.log(dataSaved)
+      if(dataSaved==null){
+        const response = await fetch('https://rickandmortyapi.com/api/character');
+        const data = await response.json();
+        const first20Characters = data.results;
 
-      const response = await fetch('https://rickandmortyapi.com/api/character');
-      const data = await response.json();
-      const first20Characters = data.results;
+        const response2 = await fetch('https://rickandmortyapi.com/api/character?page=2');
+        const data2 = await response2.json();
+        const first20Characters2 = data2.results;
 
-      const response2 = await fetch('https://rickandmortyapi.com/api/character?page=2');
-      const data2 = await response2.json();
-      const first20Characters2 = data2.results;
+        const response3 = await fetch('https://rickandmortyapi.com/api/character?page=3');
+        const data3 = await response3.json();
+        const first20Characters3 = data3.results;
 
-      const response3 = await fetch('https://rickandmortyapi.com/api/character?page=3');
-      const data3 = await response3.json();
-      const first20Characters3 = data3.results;
+        const charactersNew = Array.from([...first20Characters, ...first20Characters2, ...first20Characters3]);
 
-      const charactersNew = Array.from([...first20Characters, ...first20Characters2, ...first20Characters3]);
+        localStorage.setItem('characters', JSON.stringify(charactersNew)); // Guardar en LocalStorage
 
-      localStorage.setItem('characters', JSON.stringify(charactersNew)); // Guardar en LocalStorage
+        setData(charactersNew);
+      }
 
-      setData(charactersNew);
+      else  setData(JSON.parse(localStorage.getItem("characters")));
 
       
     };
