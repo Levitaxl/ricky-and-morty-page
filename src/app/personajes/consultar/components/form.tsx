@@ -68,26 +68,22 @@ export const Form = (personaje) => {
         return;
     };
   return (   
-    <Card className="mt-[100px] ml-[17px] divide-y w-full mr-[15px] max-w-[1200px]" >
+    <Card className="mt-[100px] ml-[17px] divide-y w-full mr-[15px] max-w-[1200px] table-hs " >
 
-                <CardHeader className="p-4  w-full flex space-between">
-                    <CardTitle className="text-[25px] flex justify-between">Edit Character {title}
-                
-                    <Link href="listado">
+               
+            <CardHeader className="p-4 w-full flex flex-row justify-between table-header">
+                <CardTitle className="text-[25px] mt-auto">Edit Character {title}</CardTitle>
+                <Link href="listado">
                         <Button className="bg-[#1fbad6]" type="submit">
-                            BACK TO LISTING
+                        BACK TO LISTING
                         </Button>
                     </Link>
-                </CardTitle>
-                    
-                
-               
             </CardHeader>
-            <CardContent className="bg-[#ffff]">
-                <div className="mt-[20px] hs-box-shadow flex ">
+            <CardContent className="bg-[#ffff] test">
+                <div className="mt-[20px] hs-box-shadow flex flex-column">
                   
-                        <div className="logo-icon mt-[10px] w-full m-auto flex w-[150%] max-w-[355px]"><img className="w-[150%] max-w-[355px]" src={image}/></div>
-                        <div className="w-full pl-[30px] ">
+                        <div className="logo-icon mt-[10px] w-full m-auto flex w-[150%] max-w-[355px]"><img className="w-[150%] max-w-[355px] img-create" src={image}/></div>
+                        <div className="w-full pl-[30px] responsive-padding-5 ">
                             <div className="space-y-2 mt-[5px] ">
                                 <Label htmlFor="Nombre" className="font-bold">Nombre<span className="text-red-600">*</span></Label>
                                 <Input id="nombre" placeholder="Nombre" required value={nombre}  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setNombre(event.target.value) }}/>
