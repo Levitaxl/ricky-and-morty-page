@@ -12,9 +12,9 @@ export const HeaderComponent = ( ) => {
     const handleClik = useContext(handleClickContext);
 
   return (
-    <div className={`flex-1 pl-[30px] mr-[15px]  ${showElements && 'ml-[250px]'} ${!showElements && 'ml-[115px]'} '}`} >
-        <div className ="fixed w-full mr-[10px] z-10 h-[30px] bg-gray-200">
-        <div className ={`fixed w-full mr-[10px] z-10 mt-[15px]  ${showElements && 'pr-[295px]'}   ${!showElements && 'pr-[160px]'} '}`} >
+    <div className={`header flex-1 pl-[30px] mr-[15px]  ${showElements && 'ml-[250px]'} ${!showElements && 'ml-[115px]'} '}`} >
+        <div className ="fixed w-full mr-[10px] z-10 h-[30px] sidebar-pr-responsive-hs bg-gray-200">
+        <div className ={`fixed w-full mr-[10px] z-10 mt-[15px]  sidebar-pr-responsive ${showElements && 'pr-[295px]'}   ${!showElements && 'pr-[160px]'} '}`} >
             <Card className="w-full mr-[10px] shadow-[0 4px 24px 0 rgba(34,41,47,0.1))]" >
             <CardHeader className="p-4 flex flex-row">
                 <SideBarIcon onClick={handleClik} className="h-5 w-5 text-gray-500 dark:text-gray-400 m-auto mx-0 cursor-pointer	" />
