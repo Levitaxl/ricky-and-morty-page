@@ -206,7 +206,7 @@ export default function listado() {
       </tableContext.Provider> 
 
 
-      <div className=" st-2 st-sticky-share-buttons st-left st-toggleable st-has-labels  ">
+      <div className=" st-2 st-sticky-share-buttons st-left st-toggleable st-has-labels hidden ">
           <a className="st-btn st-first m-auto" data-network="whatsapp" href="#">
             <svg className="h-5 w-5 text-gray-500 dark:text-gray-400  m-auto " xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             <div className="st-label">Charapters</div>
