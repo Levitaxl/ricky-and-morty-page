@@ -28,6 +28,10 @@
       margin-bottom: 55px;
     }
 
+    .card-title{
+      margin-left: 5px;
+    }
+
     .table-hs{
       display: table;
     }

@@ -21,20 +21,14 @@ export const SidebarComponent = ( ) => {
             <ul>
               <li className={`flex items-center  hover:bg-gray-100 dark:hover:bg-gray-700 p-4  ${!showElementsSidebar && 'm-auto'} ` } >
                 <Link className={`flex items-center space-x-4  ${!showElementsSidebar && 'm-auto'} ` }  href="#">
-                  <HomeIcon className={`h-5 w-5 text-gray-500 dark:text-gray-400  ${showElementsSidebar && 'm-auto'} ` }  />
-                  {showElementsSidebar &&  <span className="text-sm font-medium">Crear Personaje</span>}
+                  <UsersIcon className={`h-5 w-5 text-gray-500 dark:text-gray-400  ${showElementsSidebar && 'm-auto'} ` }  />
+                  {showElementsSidebar &&  <span className="text-sm font-medium">Characters</span>}
                 </Link>
               </li>
               <li className="flex items-center p-4 hover:bg-gray-100 dark:hover:bg-gray-700">
               <Link className={`flex items-center space-x-4  ${!showElementsSidebar && 'm-auto'} ` }  href="#">
-                  <UsersIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                  {showElementsSidebar &&  <span className="text-sm font-medium">Personajes</span>}
-                </Link>
-              </li>
-              <li className="flex items-center p-4 hover:bg-gray-100 dark:hover:bg-gray-700">
-              <Link className={`flex items-center space-x-4  ${!showElementsSidebar && 'm-auto'} ` }  href="#">
-                  <SettingsIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                  {showElementsSidebar &&  <span className="text-sm font-medium">Episodios</span>}
+                  <EpisodesIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                  {showElementsSidebar &&  <span className="text-sm font-medium">Episodes</span>}
                 </Link>
               </li>
             </ul>
@@ -106,6 +100,31 @@ function SettingsIcon(props:any) {
         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <polyline points="9 22 9 12 15 12 15 22" />
       </svg>
+    )
+  }
+
+  function EpisodesIcon(props:any) {
+    return (
+      <svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+
+      <g fill="none" fillRule="evenodd" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" transform="translate(1 4)"/>
+
+      <path d="m13.5 12.5v-6c0-1.1045695-.8954305-2-2-2h-9c-1.1045695 0-2 .8954305-2 2v6c0 1.1045695.8954305 2 2 2h9c1.1045695 0 2-.8954305 2-2z"/>
+
+      <path d="m15.5 12.5v-6.99481259c0-1.65685425-1.3431458-3-3-3-.0017276 0-.0034553 0-.0051829 0l-8.9948171.01554432"/>
+
+      <path d="m17.5 10.5v-5.99308345c0-2.209139-1.790861-4-4-4-.0023035 0-.004607 0-.0069106 0l-7.9930894.01381519"/>      </svg>
     )
   }
   
