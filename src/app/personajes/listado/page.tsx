@@ -24,7 +24,7 @@ export default function listado() {
 
 
 
-  const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
+  const [showElements, setShowElements] = useState<boolean>(false); // Estado para controlar la visibilidad
   const [data, setData] = useState<any[]>([]);
 
 
@@ -162,8 +162,6 @@ export default function listado() {
   ]
   
   useEffect(() => {
-
-    setShowElements(localStorage.getItem('prueba')==="true");
     const fetchCharacters = async () => {
       const dataSaved = localStorage.getItem("characters");
       console.log(dataSaved)

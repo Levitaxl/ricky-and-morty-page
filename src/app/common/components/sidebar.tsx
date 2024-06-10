@@ -20,15 +20,15 @@ export const SidebarComponent = ( ) => {
             </div>
             <ul>
               <li className={`flex items-center  hover:bg-gray-100 dark:hover:bg-gray-700 p-4  ${!showElementsSidebar && 'm-auto'} ` } >
-                <Link className={`flex items-center space-x-4  ${!showElementsSidebar && 'm-auto'} ` }  href="/personajes/listado">
+                <Link className={`flex items-center  ${showElementsSidebar && 'space-x-4'} ${!showElementsSidebar && 'm-auto flex flex-col'} ` }  href="/personajes/listado">
                   <UsersIcon className={`h-5 w-5 text-gray-500 dark:text-gray-400  ${showElementsSidebar && 'm-auto'} ` }  />
-                  {showElementsSidebar &&  <span className="text-sm font-medium">Characters</span>}
+                  <span className="text-sm font-medium m-auto">Characters</span>
                 </Link>
               </li>
               <li className="flex items-center p-4 hover:bg-gray-100 dark:hover:bg-gray-700">
-              <Link className={`flex items-center space-x-4  ${!showElementsSidebar && 'm-auto'} ` }  href="/episodios/listado">
+              <Link className={`flex items-center  ${showElementsSidebar && 'space-x-4'}    ${!showElementsSidebar && 'm-auto flex flex-col'} ` }  href="/episodios/listado">
                   <EpisodesIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                  {showElementsSidebar &&  <span className="text-sm font-medium">Episodes</span>}
+                  <span className="text-sm font-medium m-auto">Episodes</span>
                 </Link>
               </li>
             </ul>

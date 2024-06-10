@@ -13,7 +13,7 @@ import {userContext, tableContext,handleClickContext,columnsContext} from "../..
 
 
 export default function consultar() {
-  const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
+  const [showElements, setShowElements] = useState<boolean>(false); // Estado para controlar la visibilidad
 
   const handleClick = async () => {
     setShowElements(!showElements)
