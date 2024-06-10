@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { ChevronDown } from "lucide-react"
 import {tableContext} from '../page'
 import {userContext,columnsContext} from '../page'
+import Link from "next/link"
 
 
 import { Button } from "@/components/ui/button"
@@ -73,12 +74,20 @@ export const TableComponent = (userContext ) => {
   
 
   return (
-    <div className={`flex-1  mr-[15px]  transition-all	duration-100 ${showElements && 'ml-[25px]'} ${!showElements && 'ml-[18px]'}`} >
-        <div className ="pt-[13px] mt-[85px]">
-        <Card className="w-full mr-[10px] shadow-[0 4px 24px 0 rgba(34,41,47,0.1))]" >
+    <div className={`table-hs flex-1  mr-[15px]  transition-all	duration-100 ${showElements && 'ml-[25px]'} ${!showElements && 'ml-[17px]'}`} >
+        <div className ="pt-[13px] mt-[85px] ml-[2px]">
+        <Card className={`w-full mr-[10px] mt-[2px] shadow-[0 4px 24px 0 rgba(34,41,47,0.1)]  ${showElements && 'ml-[5px] w-[99.6%]'}`} >
         <div className="grid grid-cols-1 divide-y">
-            <CardHeader className="p-4 flex flex-row ">
-                <CardTitle className="text-[25px]">Listado de personajes</CardTitle>
+
+            
+
+            <CardHeader className="p-4 w-full flex flex-row justify-between table-header">
+                <CardTitle className="card-title text-[25px] ml-[10px] mt-auto">Characters</CardTitle>
+                <Link href="crear">
+                        <Button className="bg-[#1fbad6]" type="submit">
+                            CREATE CHARACTER
+                        </Button>
+                    </Link>
             </CardHeader>
 
             <CardContent>
