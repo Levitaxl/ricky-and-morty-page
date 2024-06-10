@@ -9,7 +9,7 @@ import '../styles/rightSlotStyle.css'
 export const RightSlot = () => {
 
   return (   
-    <Card className="mx-auto right-slot">
+    <Card className="mx-auto right-slot h-[100vh;]">
         <div className="admin-marign-top-9-5">
             <CardHeader className="space-y-1">
                 <div className="logo-icon"><img src="./logo.png"/></div>
