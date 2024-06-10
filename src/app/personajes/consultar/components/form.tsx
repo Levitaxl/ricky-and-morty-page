@@ -70,12 +70,12 @@ export const Form = (personaje) => {
         return;
     };
   return (   
-    <Card className="mt-[100px] ml-[19px] divide-y w-full mr-[15px] max-w-[1200px] table-hs " >
+    <Card className="mt-[100px] ml-[19px] divide-y w-full mr-[15px] table-hs " >
 
                
             <CardHeader className="p-4 w-full flex flex-row justify-between table-header">
                 <CardTitle className="card-title text-[25px] ml-[10px] mt-auto">Edit Character {title}</CardTitle>
-                <Link href="listado">
+                <Link href="listado" className="mr-[6px;]">
                         <Button className="bg-[#1fbad6]" type="submit">
                         BACK TO LISTING
                         </Button>
