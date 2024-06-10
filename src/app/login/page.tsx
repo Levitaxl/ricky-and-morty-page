@@ -12,7 +12,7 @@ import {RightSlot} from "@/app/login/components/rightSlot";
 import './styles/style.css'
 
 
-export default function login() {
+export default function Login() {
   return (
     <div className="flex admin-mainflex">
       <LeftSlot></LeftSlot>
