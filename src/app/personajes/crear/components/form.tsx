@@ -1,12 +1,13 @@
 'use client';
 import React, {  useState } from 'react';
 
-import { CardTitle, CardHeader, CardContent, Card } from "@/app/login/components/card"
-import { Label } from "@/app/login/components/label"
-import { Input } from "@/app/login/components/input"
-import { Button } from "@/app/login/components/button"
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from "@/components/ui/toast"
+import { useRouter } from 'next/navigation';
 import Link from "next/link"
 
 import '../styles/form.css'
@@ -17,6 +18,9 @@ export const Form = (props:any) => {
     const [especie, setEspecie] = useState<string>("");
     const [gender, setGender] = useState<string>("");
     const [type, setType] = useState<string>("");
+    const router = useRouter();
+    const [tiempo, setTiempo] = useState(1.5); // 1 segundo
+
 
     const { toast } = useToast()
 
@@ -24,7 +28,7 @@ export const Form = (props:any) => {
 
         let error = ""
 
-        if(nombre=="" || especie=="" || gender=="")  error +="Ingrese los campos de nombre, especie, genero";
+        if(nombre=="" || especie=="" || gender=="")  error +="Enter the fields of name, species, gender";
         if(error!=""){
             toast({
                 variant:"destructive",
@@ -44,7 +48,7 @@ export const Form = (props:any) => {
             className: 
                 'top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4 bg-green-500	 text-white	 '
               ,
-          title: "Personaje creado exitosamente.",
+          title: "Successfully created character.",
           action: <ToastAction altText="Cerrar">Cerrar</ToastAction>
         })
 
@@ -58,17 +62,20 @@ export const Form = (props:any) => {
         personajeNew['type'] = type;
 
         personajes.push(personajeNew)
-        console.log(personajes)
 
         localStorage.setItem('characters', JSON.stringify(personajes)); // Guardar en LocalStorage
+
+        setTimeout(() => {
+            router.push('/personajes/listado'); // Cambiar '/pagina-destino' a la URL deseada
+          }, tiempo * 1000);
         return;
     };
     return (   
-        <Card className="mt-[100px] ml-[19px] divide-y w-full mr-[15px] max-w-[1200px] table-hs " >
+        <Card className="mt-[100px] ml-[19px] divide-y w-full mr-[15px] table-hs " >
     
     <CardHeader className="p-4 w-full flex flex-row justify-between table-header ">
                 <CardTitle className="card-title text-[25px] ml-[10px] mt-auto">Create Character</CardTitle>
-                <Link href="listado">
+                <Link href="listado" className="mr-[6px;]">
                         <Button className="bg-[#1fbad6]" type="submit">
                         BACK TO LISTING
                         </Button>
@@ -80,7 +87,7 @@ export const Form = (props:any) => {
                             <div className="logo-icon mt-[10px] w-full m-auto flex w-[150%] max-w-[355px]"><img className="w-[150%] max-w-[355px] img-create" src={image}/></div>
                             <div className="w-full pl-[30px] responsive-padding-5 ">
                                 <div className="space-y-2 mt-[5px] ">
-                                    <Label htmlFor="Nombre" className="font-bold">Name<span className="text-red-600">*</span></Label>
+                                    <Label htmlFor="nombre" className="font-bold">Name<span className="text-red-600">*</span></Label>
                                     <Input id="nombre" placeholder="Name" required value={nombre}  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setNombre(event.target.value) }}/>
                                 </div>
     
@@ -100,7 +107,7 @@ export const Form = (props:any) => {
                                     <Input id="type" placeholder="Type" required type="text" value={type} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setType(event.target.value) }}/>
                                 </div>
                                 <Button onClick={SendToCreate}className="w-full bg-[#799FCB] space-y-2 mt-[15px]" type="submit">
-                                    Update
+                                    Create
                                 </Button>
                             </div>
                     </div>

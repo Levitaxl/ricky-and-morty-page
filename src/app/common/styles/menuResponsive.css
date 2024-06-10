@@ -1,47 +1,3 @@
-@media (max-width: 820px) {
-    .sidebar {
-        display: none;
-    }
-
-    .sidebar-component{
-      width: 0;
-    }
-    .sidebar-pr-responsive{
-      padding: 0;
-      padding-left: 17px;
-     padding-right: 14px;
-    }
-
-    .sidebar-pr-responsive-hs{
-      left: 0;
-    }
-
-    .header svg{
-      display: none;
-
-    }
-}
-
-
-@media (max-width: 820px) {
-
-    .table-hs{
-      display: table;
-    }
-
-    .table-header{
-      flex-direction: column;
-    }
-
-    .card-title{
-      margin-left: 2px;
-    }
-}
-
-
-
-
-
 /*MENU DOWN*/
 .st-2 {
     font-family: "Helvetica Neue", Verdana, Helvetica, Arial, sans-serif;;
@@ -187,8 +143,8 @@
   .st-2.st-left.st-hidden .st-toggle .st-right {
     display: block;
   }
-
-  @media (max-width: 820px) {
+  
+  @media (max-width: 912px) {
     .st-2 .st-btn.st-first {
         display: block;
     }
@@ -202,8 +158,8 @@
       height: 65px;
         width: 100%;
     }
-  }@media (max-width: 820px) {
-
+  }@media (max-width: 912px) {
+  
     .st-2 {
     bottom: 0;
     display: flex;
@@ -241,7 +197,7 @@
     text-align: center;
     width: auto;
     margin: auto;
-
+  
   }
   .st-2 .st-btn > span {
     display: block;
@@ -296,11 +252,11 @@
   .st-2 .st-btn[data-network='snapchat'] > span {
     color: #333};
   
-
+  
   .st-label{
     display: block!important;
   }
-
+  
   #ht-ctc-chat, #whatsapp-text{
     transition:.2s
   }

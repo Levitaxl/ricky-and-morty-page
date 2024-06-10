@@ -2,8 +2,7 @@
 
 import React, { useContext } from 'react';
 import { ChevronDown } from "lucide-react"
-import {tableContext} from '../page'
-import {userContext,columnsContext} from '../page'
+import {tableContext, columnsContext} from "../../../common/contexts/contexts"
 import Link from "next/link"
 
 
@@ -83,7 +82,7 @@ export const TableComponent = (userContext ) => {
 
             <CardHeader className="p-4 w-full flex flex-row justify-between table-header">
                 <CardTitle className="card-title text-[25px] ml-[10px] mt-auto">Characters</CardTitle>
-                <Link href="crear">
+                <Link href="crear" className="mr-[6px;]">
                         <Button className="bg-[#1fbad6]" type="submit">
                             CREATE CHARACTER
                         </Button>

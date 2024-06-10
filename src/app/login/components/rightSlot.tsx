@@ -1,9 +1,9 @@
 'use client';
 
-import { CardTitle, CardHeader, CardContent, Card } from "@/app/login/components/card"
-import { Label } from "@/app/login/components/label"
-import { Input } from "@/app/login/components/input"
-import { Button } from "@/app/login/components/button"
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import '../styles/rightSlotStyle.css'
 
 export const RightSlot = () => {
