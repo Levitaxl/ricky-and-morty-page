@@ -1,10 +1,10 @@
 'use client';
 import React, { useContext, useState , useEffect} from 'react';
 
-import { CardTitle, CardHeader, CardContent, Card } from "@/app/login/components/card"
-import { Label } from "@/app/login/components/label"
-import { Input } from "@/app/login/components/input"
-import { Button } from "@/app/login/components/button"
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from "@/components/ui/toast"
 import Link from "next/link"
@@ -87,7 +87,7 @@ export const Form = (personaje) => {
                         <div className="logo-icon mt-[10px] w-full m-auto flex w-[150%] max-w-[355px]"><img className="w-[150%] max-w-[355px] img-create" src={image}/></div>
                         <div className="w-full pl-[30px] responsive-padding-5 ">
                             <div className="space-y-2 mt-[5px] ">
-                                <Label htmlFor="Nombre" className="font-bold">Name<span className="text-red-600">*</span></Label>
+                                <Label htmlFor="nombre" className="font-bold">Name<span className="text-red-600">*</span></Label>
                                 <Input id="nombre" placeholder="Name" required value={nombre}  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setNombre(event.target.value) }}/>
                             </div>
 

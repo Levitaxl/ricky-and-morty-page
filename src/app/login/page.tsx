@@ -8,6 +8,7 @@ import {LeftSlot} from "@/app/login/components/leftSlot";
 import {RightSlot} from "@/app/login/components/rightSlot";
 
 
+
 import './styles/style.css'
 
 

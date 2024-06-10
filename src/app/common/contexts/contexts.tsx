@@ -1,8 +1,8 @@
 
-import React, { useState, useEffect, createContext   } from 'react';
+import {createContext} from 'react';
 
-export const userContext = createContext({});
-export const tableContext = createContext({});;
+export const userContext = createContext(false);
+export const tableContext = createContext([]);;
 export const handleClickContext = createContext({});
-export const columnsContext     = createContext({});
+export const columnsContext     = createContext([]);
 
