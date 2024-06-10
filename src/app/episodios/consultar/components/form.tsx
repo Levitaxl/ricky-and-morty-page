@@ -90,12 +90,12 @@ export const Form = (episode) => {
 
 
                             <div className="space-y-2 mt-[5px] ">
-                                <Label htmlFor="air_date" className="font-bold">air_date<span className="text-red-600">*</span></Label>
+                                <Label htmlFor="air_date" className="font-bold">Air Date<span className="text-red-600">*</span></Label>
                                 <Input id="air_date" placeholder="air_date" required type="text" value={air_date}  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setAirDate(event.target.value) }}/>
                             </div>
 
                             <div className="space-y-2 mt-[5px] ">
-                                <Label htmlFor="episodeN" className="font-bold">episodeN <span className="text-red-600">*</span>   </Label>
+                                <Label htmlFor="episodeN" className="font-bold">Episode <span className="text-red-600">*</span>   </Label>
                                 <Input id="episodeN" placeholder="episodeN" required type="text" value={episodeN} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setEpisode(event.target.value) }}/>
                             </div>
 

@@ -113,7 +113,7 @@ export const RightSlot = () => {
     <Card className="mx-auto right-slot h-[100vh;]">
         <div className="admin-marign-top-9-5">
             <CardHeader className="space-y-1">
-                <div className="logo-icon"><img src="./logo.png"/></div>
+                <div className="logo-icon"><img className ="hs-logo" src="./logo.png"/></div>
                 <CardTitle className="text-4xl font-bold text-center !mt-6">Login To Dashboard</CardTitle>
             </CardHeader>
             <CardContent className="max-w-2xl m-auto">
