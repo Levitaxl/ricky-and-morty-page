@@ -50,6 +50,7 @@ export default function Consultar() {
   }, []);
 
   return (
+    
     <div className="flex h-screen bg-gray-200 dark:bg-gray-900">
       <userContext.Provider value={showElements}>
         <handleClickContext.Provider value={handleClick}>
