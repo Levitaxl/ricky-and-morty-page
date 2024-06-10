@@ -88,6 +88,22 @@ export const RightSlot = () => {
 
         localStorage.setItem('characters', JSON.stringify(charactersNew)); // Guardar en LocalStorage
 
+        const response4 = await fetch('https://rickandmortyapi.com/api/episode');
+        const data4 = await response4.json();
+        const first20CharactersEpisode = data4.results;
+
+        const response5 = await fetch('https://rickandmortyapi.com/api/episode?page=2');
+        const data5 = await response5.json();
+        const first20CharactersEpisode2 = data5.results;
+
+        const response6 = await fetch('https://rickandmortyapi.com/api/episode?page=3');
+        const data6 = await response6.json();
+        const first20CharactersEpisode6 = data6.results;
+
+        const episodesNew = Array.from([...first20CharactersEpisode, ...first20CharactersEpisode2, ...first20CharactersEpisode6]);
+
+        localStorage.setItem('episodes', JSON.stringify(episodesNew)); // Guardar en LocalStorage
+
         router.push('/personajes/listado'); // Cambiar '/pagina-destino' a la URL deseada
  
       };
