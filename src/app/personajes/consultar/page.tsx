@@ -5,17 +5,13 @@
 */
 'use client';
 import React, { useState, useEffect, createContext   } from 'react';
-import { SidebarComponent} from "./components/sidebar"
 import { Form} from "./components/form"
-import {MenuResponsive} from "../../common/components/menuResponsive"
 import { useSearchParams } from 'next/navigation'
+import { SidebarComponent} from "../../common/components/sidebar"
+import {MenuResponsive} from "../../common/components/menuResponsive"
 
+import {userContext, tableContext,handleClickContext,columnsContext} from "../../common/contexts/contexts"
 
-export const userContext = createContext({});
-export const tableContext = createContext({});;
-export const handleClickContext = createContext({});
-export const columnsContext = createContext({});
-export const personajeContext = createContext({});;
 
 
 export default function listado() {

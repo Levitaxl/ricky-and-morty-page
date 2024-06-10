@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import { CardTitle, CardHeader, Card } from "@/components/ui/card"
 import {tableContext} from './sidebar'
-import {handleClickContext} from '../page'
+import {handleClickContext} from "../contexts/contexts"
 
   
 

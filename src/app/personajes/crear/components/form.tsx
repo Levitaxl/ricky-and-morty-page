@@ -7,6 +7,7 @@ import { Input } from "@/app/login/components/input"
 import { Button } from "@/app/login/components/button"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from "@/components/ui/toast"
+import { useRouter } from 'next/navigation';
 import Link from "next/link"
 
 import '../styles/form.css'
@@ -17,6 +18,9 @@ export const Form = (props:any) => {
     const [especie, setEspecie] = useState<string>("");
     const [gender, setGender] = useState<string>("");
     const [type, setType] = useState<string>("");
+    const router = useRouter();
+    const [tiempo, setTiempo] = useState(1.5); // 1 segundo
+
 
     const { toast } = useToast()
 
@@ -24,7 +28,7 @@ export const Form = (props:any) => {
 
         let error = ""
 
-        if(nombre=="" || especie=="" || gender=="")  error +="Ingrese los campos de nombre, especie, genero";
+        if(nombre=="" || especie=="" || gender=="")  error +="Enter the fields of name, species, gender";
         if(error!=""){
             toast({
                 variant:"destructive",
@@ -44,7 +48,7 @@ export const Form = (props:any) => {
             className: 
                 'top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4 bg-green-500	 text-white	 '
               ,
-          title: "Personaje creado exitosamente.",
+          title: "Successfully created character.",
           action: <ToastAction altText="Cerrar">Cerrar</ToastAction>
         })
 
@@ -58,9 +62,12 @@ export const Form = (props:any) => {
         personajeNew['type'] = type;
 
         personajes.push(personajeNew)
-        console.log(personajes)
 
         localStorage.setItem('characters', JSON.stringify(personajes)); // Guardar en LocalStorage
+
+        setTimeout(() => {
+            router.push('/personajes/listado'); // Cambiar '/pagina-destino' a la URL deseada
+          }, tiempo * 1000);
         return;
     };
     return (   
@@ -100,7 +107,7 @@ export const Form = (props:any) => {
                                     <Input id="type" placeholder="Type" required type="text" value={type} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setType(event.target.value) }}/>
                                 </div>
                                 <Button onClick={SendToCreate}className="w-full bg-[#799FCB] space-y-2 mt-[15px]" type="submit">
-                                    Update
+                                    Create
                                 </Button>
                             </div>
                     </div>

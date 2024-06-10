@@ -8,18 +8,22 @@ import { Button } from '@/components/ui/button';
 import { ColumnDef } from '@tanstack/table-core';
 import { ArrowUpDown } from 'lucide-react';
 import React, { useState, useEffect, createContext} from 'react';
-import { SidebarComponent} from "./components/sidebar"
 import {TableComponent} from "./components/table"
+import { SidebarComponent} from "../../common/components/sidebar"
 import {MenuResponsive} from "../../common/components/menuResponsive"
 import Link from "next/link"
+import { useSearchParams } from 'next/navigation'
+import {userContext, tableContext,handleClickContext,columnsContext} from "../../common/contexts/contexts"
 
 
-export const userContext        = createContext({});
-export const tableContext       = createContext({});;
-export const handleClickContext = createContext({});
-export const columnsContext     = createContext({});
+//const testing = localStorage.getItem("prueba");
+
 
 export default function listado() {
+
+
+
+
   const [showElements, setShowElements] = useState<boolean>(true); // Estado para controlar la visibilidad
   const [data, setData] = useState<any[]>([]);
 
@@ -158,6 +162,8 @@ export default function listado() {
   ]
   
   useEffect(() => {
+
+    setShowElements(localStorage.getItem('prueba')==="true");
     const fetchCharacters = async () => {
       const dataSaved = localStorage.getItem("characters");
       console.log(dataSaved)

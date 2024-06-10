@@ -4,7 +4,7 @@ import '../styles/menuResponsive.css'
     export const MenuResponsive = (props:any) => {
     return (   
     <div className=" st-2 st-sticky-share-buttons st-left st-toggleable st-has-labels hidden ">
-    <a className="st-btn st-first m-auto" data-network="whatsapp" href="#">
+    <a className="st-btn st-first m-auto" data-network="whatsapp" href="/personajes/listado">
     <svg
     className="h-5 w-5 text-gray-500 dark:text-gray-400  m-auto "
   xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ import '../styles/menuResponsive.css'
       <div className="st-label">Characters</div>
     </a>
 
-    <a className="st-btn m-auto" data-network="whatsapp" href="#">
+    <a className="st-btn m-auto" data-network="whatsapp" href="/episodios/listado">
     <svg
     className="h-5 w-5 text-gray-500 dark:text-gray-400  m-auto "
   xmlns="http://www.w3.org/2000/svg"

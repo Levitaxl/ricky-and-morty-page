@@ -2,8 +2,7 @@
 
 import React, { useContext } from 'react';
 import { ChevronDown } from "lucide-react"
-import {tableContext} from '../page'
-import {userContext,columnsContext} from '../page'
+import {tableContext, columnsContext} from "../../../common/contexts/contexts"
 import Link from "next/link"
 
 
