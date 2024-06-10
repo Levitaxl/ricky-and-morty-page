@@ -32,8 +32,8 @@ body {
     position: relative;
 }
 .admin-main-image img {
-    max-width: 70%;
-    margin: auto;
+    margin-top: -25px;
+    max-width: 100%;
 }
 .forminput-holder label {
     display: block;

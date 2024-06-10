@@ -21,7 +21,7 @@ export const HeaderComponent = ( ) => {
 
             
                 <div className="flex ml-[15px]">
-                <CardTitle className="text-[#799FCB] text-sm/[17px]">Hermes Sanchez
+                <CardTitle className="text-[#799FCB] text-sm/[17px]">User Admin
                 <br/>
                 <span className="text-[#6e6b7b] text-sm/[13px] mt-[-8px]">Super Administrator</span>
                 </CardTitle>
