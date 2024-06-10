@@ -115,7 +115,7 @@ export const TableComponent = (userContext ) => {
                                 return (
                                 <DropdownMenuCheckboxItem
                                     key={column.id}
-                                    className="capitalize"
+                                    className="capitalize "
                                     checked={column.getIsVisible()}
                                     onCheckedChange={(value) =>
                                     column.toggleVisibility(!!value)
@@ -135,7 +135,7 @@ export const TableComponent = (userContext ) => {
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                 return (
-                                    <TableHead key={header.id}>
+                                    <TableHead  className="text-center" key={header.id}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
@@ -154,6 +154,7 @@ export const TableComponent = (userContext ) => {
                                 <TableRow
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"}
+                                className="text-center"
                                 >
                                 {row.getVisibleCells().map((cell) => (
                                     <TableCell key={cell.id}>
