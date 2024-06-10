@@ -1,6 +1,6 @@
 'use client';
 
-import '../styles/LeftSlotStyle.css'
+import '../styles/leftSlotStyle.css'
 
 export const LeftSlot = () => {
 
