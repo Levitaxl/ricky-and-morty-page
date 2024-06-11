@@ -107,6 +107,22 @@ export const RightSlot = () => {
         router.push('/personajes/listado'); // Cambiar '/pagina-destino' a la URL deseada
  
       };
+
+
+      const handleClickForgetPassword = async () => {
+
+        toast({
+            variant:"default",
+            className: 
+                'top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4 bg-green-500	 text-white	 '
+              ,
+          title: "User.",
+          description: "Email: user@user.com / password: user123#",
+          action: <ToastAction altText="Cerrar">Cerrar</ToastAction>
+        })
+ 
+      };
+      
     
 
   return (   
@@ -128,7 +144,7 @@ export const RightSlot = () => {
                     </div>
 
                     <div className="forminput-holder text-[#428BCA]">
-                        <a id="forgot_btn"   className="hotelhide">¿Se te olvidó tu contraseña?</a>
+                        <a id="forgot_btn" onClick={handleClickForgetPassword}  className="hotelhide cursor-pointer	">Did you forget your password?</a>
                     </div>
 
                     <Button onClick={handleClick} className= {`w-full ${permiso && 'bg-[#799FCB]'} ${!permiso && 'bg-[#111827] cursor-not-allowed opacity-100	'}`}   type="submit">

@@ -14,9 +14,10 @@ body {
 }
 
 .admin-identy-holder h1 {
-    font-size: 30px;
     color: #fff;
     text-align: center;
+    margin-top: 15px;
+    font-size: 2.25rem;
 }
 .admin-identy-holder strong {
     font-size: 20px;
@@ -49,8 +50,9 @@ body {
 }
 
 .admin-icon img {
-    height: 90px;
+    height: 135px;
     margin: auto;
+    margin-top: 5px;
 }
 
 .logo-icon .hs-logo{
