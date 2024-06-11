@@ -12,7 +12,7 @@ import {userContext, tableContext,handleClickContext,columnsContext} from "../..
 
 
 
-export default function consultar() {
+export default function Crear() {
   const [showElements, setShowElements] = useState<boolean>(false); // Estado para controlar la visibilidad
 
   const handleClick = async () => {
