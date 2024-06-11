@@ -74,7 +74,7 @@ export const TableComponent = (userContext ) => {
 
   return (
     <div className={`table-hs flex-1  mr-[15px]  transition-all	duration-100 ${showElements && 'ml-[25px]'} ${!showElements && 'ml-[17px]'}`} >
-        <div className ="pt-[13px] mt-[85px] ml-[2px] mb-[50px]">
+        <div className ="pt-[13px] mt-[85px] ml-[2px] mb-[80px]">
         <Card className={`w-full mr-[10px] mt-[2px] shadow-[0 4px 24px 0 rgba(34,41,47,0.1)]  ${showElements && 'ml-[5px] w-[99.6%]'}`} >
         <div className="grid grid-cols-1 divide-y">
 
