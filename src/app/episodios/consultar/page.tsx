@@ -14,7 +14,7 @@ import {userContext, tableContext,handleClickContext,columnsContext} from "../..
 
 
 
-export default function listado() {
+export default function Consultar() {
   const [showElements, setShowElements] = useState<boolean>(false); // Estado para controlar la visibilidad
   const [personaje, setPersonaje] = useState<any>({}); // Estado para controlar la visibilidad
   const [bool, setBool] = useState<any>(false); // Estado para controlar la visibilidad

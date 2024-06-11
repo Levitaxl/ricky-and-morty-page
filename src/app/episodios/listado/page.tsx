@@ -15,7 +15,7 @@ import Link from "next/link"
 import {userContext, tableContext,handleClickContext,columnsContext} from "../../common/contexts/contexts"
 
 
-export default function listado() {
+export default function Listado() {
   const [showElements, setShowElements] = useState<boolean>(false); // Estado para controlar la visibilidad
   const [data, setData] = useState<any[]>([]);
 
